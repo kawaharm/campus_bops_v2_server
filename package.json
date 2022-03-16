@@ -1,0 +1,25 @@
+{
+  "name": "campus_bops_v2_server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kawaharm/campus_bops_v2_server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kawaharm/campus_bops_v2_server/issues"
+  },
+  "homepage": "https://github.com/kawaharm/campus_bops_v2_server#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3"
+  },
+  "description": ""
+}
