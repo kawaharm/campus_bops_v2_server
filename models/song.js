@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       models.Song.belongsTo(models.Category, { foreignKey: 'CategoryId' })
     }
   };
-  song.init({
+  Song.init({
     title: DataTypes.STRING,
     artist: DataTypes.STRING,
     album: DataTypes.STRING,
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     CategoryId: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'song',
+    modelName: 'Song',
   });
   return Song;
 };

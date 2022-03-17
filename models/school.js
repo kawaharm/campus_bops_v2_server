@@ -14,11 +14,11 @@ module.exports = (sequelize, DataTypes) => {
       models.School.hasMany(models.Category, { foreignKey: 'SchoolId' });
     }
   };
-  school.init({
+  School.init({
     name: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'school',
+    modelName: 'School',
   });
   return School;
 };
