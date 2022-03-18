@@ -4,7 +4,6 @@ const morgan = require("morgan");
 const app = express();
 const db = require("./db");
 const cors = require("cors");
-const axios = require('axios');
 const querystring = require('querystring');
 const {
     School,
@@ -33,6 +32,7 @@ app.use(express.json());
 app.use('/api/v1/schools', require('./controllers/schools'));
 app.use('/api/v1/categories', require('./controllers/categories'));
 app.use('/api/v1/songs', require('./controllers/songs'));
+app.use('/api/v1/search', require('./controllers/search'));
 
 
 const port = process.env.PORT || 3006;

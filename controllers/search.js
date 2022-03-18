@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
-const querystring = require('querystring');
+const querystring = require('query-string');
 let buff = new Buffer.from(`${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`);
 let authKey = buff.toString('base64');
 let headers = {
@@ -19,7 +19,7 @@ let headers = {
  * */
 
 // SEARCH BY SONG
-router.get('/', function (req, res) {
+router.get('/', (req, res) => {
     // Make a AXIOS call (POST) to submit CLIENT_ID and CLIENT_SECRET
     axios.post('https://accounts.spotify.com/api/token',
         querystring.stringify({ grant_type: 'client_credentials' }),
@@ -37,6 +37,7 @@ router.get('/', function (req, res) {
 
             // Define song variable using value from song search bar
             let track = req.query.song;
+            console.log('THIS TRACK: ', track);
 
             // Make another axios (GET) to retrieve song data 
             axios.get(`https://api.spotify.com/v1/search?q=${track}&type=track&offset=0&limit=5`, config)
@@ -58,6 +59,7 @@ router.get('/', function (req, res) {
                             song.songPlayerId = songPlayerId;
                             songArray.push(song);
                         }
+                        console.log(songArray);
                     }
                     else {
                         console.log('This song does not exist');
@@ -70,8 +72,8 @@ router.get('/', function (req, res) {
                 });
 
         })
-        .catch(function (err) {
-            console.log("ERROR", err.message)
+        .catch(err => {
+            console.log(err)
         })
 });
 
