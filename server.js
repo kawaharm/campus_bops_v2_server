@@ -4,12 +4,21 @@ const morgan = require("morgan");
 const app = express();
 const db = require("./db");
 const cors = require("cors");
+const axios = require('axios');
+const querystring = require('querystring');
 const {
     School,
     Category,
     User,
     Song
 } = require('./models');
+
+// Code for Spotify API
+let buff = new Buffer.from(`${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`);
+let authKey = buff.toString('base64');
+let headers = {
+    Authorization: `Basic ${authKey}`
+}
 
 // Logs response status and time (ms)
 // app.use(morgan("dev"));
@@ -20,19 +29,10 @@ app.use(cors())
 app.use(express.json());
 
 
-// app.get('/', (req, res) => {
-//     School.findAll()
-//         .then(function (schoolList) {
-//             res.render('homepage', { schools: schoolList })
-//         })
-//         .catch(function (err) {
-//             console.log('ERROR', err);
-//             res.json({ message: 'Error occured, please try again....' });
-//         });
-// })
-
 // CONTROLLERS
 app.use('/api/v1/schools', require('./controllers/schools'));
+app.use('/api/v1/categories', require('./controllers/categories'));
+app.use('/api/v1/songs', require('./controllers/songs'));
 
 
 const port = process.env.PORT || 3006;

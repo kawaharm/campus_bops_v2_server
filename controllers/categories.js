@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const {
-    School,
+    Category,
 } = require('../models');
 
 /**
  * =======================================================
- * Schools
+ * Categories
  * =======================================================
 */
 
@@ -14,14 +14,14 @@ const {
  * GET ROUTES
  * */
 
-// GET all schools
-router.get("/", (req, res) => {
-    School.findAll()
-        .then(schoolList => {
+// GET all categories
+router.get("/", async (req, res) => {
+    Category.findAll()
+        .then(categoryList => {
             res.status(200).json({
                 status: "success",
                 data: {
-                    schools: schoolList
+                    categories: categoryList
                 }
             })
         })
@@ -30,19 +30,21 @@ router.get("/", (req, res) => {
         })
 });
 
-// GET school by ID
-router.get("/:id", (req, res) => {
-    School.findByPk(req.params.id)
-        .then(school => {
-            if (school) {
+// GET category by ID
+router.get("/:id", async (req, res) => {
+    Category.findByPk(req.params.id)
+        .then(category => {
+            if (category) {
                 res.status(200).json({
                     status: "success",
-                    school
+                    data: {
+                        category
+                    }
                 })
             } else {
-                console.log('This school does not exist');
+                console.log('This category does not exist');
                 // render a 404 page
-                res.render('404', { message: 'This school does not exist' });
+                res.render('404', { message: 'This category does not exist' });
             }
         })
         .catch(err => {
@@ -55,23 +57,21 @@ router.get("/:id", (req, res) => {
  * POST ROUTES
  * */
 
-// CREATE a school
 router.post("/", (req, res) => {
-    School.create({
+    Category.create({
         name: req.body.name,
     })
-        .then(newSchool => {
-            console.log('NEW SCHOOL', newSchool.toJSON());
+        .then(newCategory => {
             res.status(201).json({
                 status: "success",
                 data: {
-                    school: newSchool
+                    category: newCategory
                 }
             })
         })
         .catch(err => {
             console.log(err);
-            res.render('404', { message: 'School was not added please try again...' });
+            res.render('404', { message: 'Category was not added please try again...' });
         });
 });
 
@@ -80,8 +80,8 @@ router.post("/", (req, res) => {
  * PUT ROUTES
  * */
 
-router.put('/:id', (req, res) => {
-    School.update({
+router.put('/:id', function (req, res) {
+    Category.update({
         name: req.body.name
     }, { where: { id: req.params.id } })
         .then(response => {
@@ -89,7 +89,7 @@ router.put('/:id', (req, res) => {
             res.status(200).json({
                 status: "success",
                 data: {
-                    school: response
+                    category: response
                 },
             })
         })
@@ -104,8 +104,8 @@ router.put('/:id', (req, res) => {
  * DELETE ROUTES
  * */
 
-router.delete('/:id', (req, res) => {
-    School.destroy({ where: { id: req.params.id } })
+router.delete('/:id', function (req, res) {
+    Category.destroy({ where: { id: req.params.id } })
         .then(response => {
             console.log('SCHOOL DELETED', response);
             res.status(200).json({
@@ -114,7 +114,7 @@ router.delete('/:id', (req, res) => {
         })
         .catch(err => {
             console.log(err);
-            res.render('404', { message: 'School was not deleted, please try again...' });
+            res.render('404', { message: 'Category was not deleted, please try again...' });
         })
 });
 
