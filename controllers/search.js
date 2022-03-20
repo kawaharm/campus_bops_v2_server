@@ -58,7 +58,6 @@ router.get('/', (req, res) => {
                             song.songPlayerId = songPlayerId;
                             songArray.push(song);
                         }
-                        console.log(songArray);
                     }
                     else {
                         console.log('This song does not exist');
