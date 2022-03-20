@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {
     School,
+    Category
 } = require('../models');
 
 /**
@@ -35,10 +36,18 @@ router.get("/:id", (req, res) => {
     School.findByPk(req.params.id)
         .then(school => {
             if (school) {
-                res.status(200).json({
-                    status: "success",
-                    school
-                })
+                // Show all categories associated with school
+                school.getCategories()
+                    .then(categories => {
+                        res.status(200).json({
+                            status: "success",
+                            school,
+                            categories
+                        })
+                    })
+                    .catch(function (err) {
+                        console.log('Error finding categories in school', err);
+                    })
             } else {
                 console.log('This school does not exist');
                 // render a 404 page
@@ -74,6 +83,26 @@ router.post("/", (req, res) => {
             res.render('404', { message: 'School was not added please try again...' });
         });
 });
+
+// CREATE new category associated with school id
+router.post("/:id/addCategory", (req, res) => {
+    Category.create({
+        SchoolId: req.params.id,
+        name: req.body.name,
+    })
+        .then(newCategory => {
+            console.log('New Category', newCategory.toJSON());
+            res.status(201).json({
+                status: "success",
+                data: {
+                    category: newCategory
+                }
+            })
+        })
+        .catch(err => {
+            console.log('ERROR: ', err);
+        })
+})
 
 
 /**

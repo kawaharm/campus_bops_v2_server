@@ -37,7 +37,6 @@ router.get('/', (req, res) => {
 
             // Define song variable using value from song search bar
             let track = req.query.song;
-            console.log('THIS TRACK: ', track);
 
             // Make another axios (GET) to retrieve song data 
             axios.get(`https://api.spotify.com/v1/search?q=${track}&type=track&offset=0&limit=5`, config)
