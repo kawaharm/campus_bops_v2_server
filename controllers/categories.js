@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {
     Category,
+    Song
 } = require('../models');
 
 /**
@@ -74,6 +75,29 @@ router.post("/", (req, res) => {
             res.render('404', { message: 'Category was not added please try again...' });
         });
 });
+
+// CREATE new song associated with category id
+router.post("/:id/addSong", (req, res) => {
+    Song.create({
+        CategoryId: req.params.id,
+        title: req.body.title,
+        artist: req.body.artist,
+        album: req.body.album,
+        albumCover: req.body.albumCover,
+        songPlayerId: req.body.songPlayerId,
+    })
+        .then(newSong => {
+            res.status(201).json({
+                status: "success",
+                data: {
+                    song: newSong
+                }
+            })
+        })
+        .catch(err => {
+            console.log(err);
+        })
+})
 
 
 /**

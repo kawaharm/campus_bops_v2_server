@@ -32,7 +32,6 @@ app.use(express.json());
 app.use('/api/v1/schools', require('./controllers/schools'));
 app.use('/api/v1/categories', require('./controllers/categories'));
 app.use('/api/v1/songs', require('./controllers/songs'));
-app.use('/api/v1/search', require('./controllers/search'));
 
 
 const port = process.env.PORT || 3006;

@@ -72,6 +72,7 @@ router.post("/", (req, res) => {
         title: req.body.title,
         artist: req.body.artist,
         album: req.body.album,
+        albumCover: req.body.albumCover,
         songPlayerId: req.body.songPlayerId,
     })
         .then(newSong => {
@@ -105,11 +106,6 @@ router.post('/search', (req, res) => {
                 }
             }
 
-            console.log('song title: ', req.body.title)
-            console.log('song artist: ', req.body.artist)
-            console.log('song album: ', req.body.album)
-
-
             // Search query id for song title
             let track = req.body.title;
 
@@ -125,7 +121,7 @@ router.post('/search', (req, res) => {
                         for (const item of items) {
                             let song = {};
                             const songTitle = item.name;
-                            const artists = item.artists.map(artist => artist.name);    // Map artist array to obtain all artists in song 
+                            const artists = item.artists.map(artist => artist.name).toString();    // Map artist array to obtain all artists in song 
                             const albumName = item.album.name;
                             const albumCover = item.album.images[1].url;
                             const songPlayerId = item.id;   // For embedded player
