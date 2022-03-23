@@ -36,12 +36,20 @@ router.get("/:id", async (req, res) => {
     Category.findByPk(req.params.id)
         .then(category => {
             if (category) {
-                res.status(200).json({
-                    status: "success",
-                    data: {
-                        category
-                    }
-                })
+                category.getSongs()
+                    .then(songs => {
+                        res.status(200).json({
+                            status: "success",
+                            data: {
+                                category,
+                                songs
+                            }
+                        })
+                    })
+                    .catch(err => {
+                        console.log('Error finding songs in category', err);
+                    })
+
             } else {
                 console.log('This category does not exist');
                 // render a 404 page
