@@ -66,6 +66,7 @@ router.get("/:id", (req, res) => {
 
 // CREATE a school
 router.post("/", (req, res) => {
+    console.log(req.body);
     School.create({
         name: req.body.name,
     })
