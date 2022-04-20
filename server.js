@@ -24,10 +24,12 @@ let headers = {
 //     origin: "https://campus-bops.netlify.app/",
 // }));
 
-app.options('/', function (req, res) {
-    res.setHeader("Access-Control-Allows-Origins", "*");
-    res.end();
-});
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+  
 // Convert client's response from JSON to Javascript object
 app.use(express.json());
 
