@@ -7,6 +7,9 @@ const cors = require('cors');
 const querystring = require('querystring');
 const { School, Category, User, Song } = require('./models');
 
+app.use(cors());
+app.options('*',cors());
+
 // Code for Spotify API
 let buff = new Buffer.from(
   `${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`
@@ -23,8 +26,7 @@ let headers = {
 // app.use(cors({
 //     origin: "https://campus-bops.netlify.app/",
 // }));
-app.use(cors());
-app.options('*',cors());
+
 
 // app.use(function(req, res, next) {
 //     res.header("Access-Control-Allow-Origin", "*");
