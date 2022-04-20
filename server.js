@@ -23,6 +23,7 @@ let headers = {
 // app.use(cors({
 //     origin: "https://campus-bops.netlify.app/",
 // }));
+app.use(cors());
 app.options('*',cors());
 
 // app.use(function(req, res, next) {
