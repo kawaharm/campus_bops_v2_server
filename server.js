@@ -21,10 +21,6 @@ let headers = {
 // app.use(morgan("dev"));
 
 // // Allow CORS for client-side requests
-const corsOptions = {
-  origin: "https://campus-bops.netlify.app",
-  credentials: true,
-};
 app.use(cors(corsOptions));
 
 // app.use(cors());
@@ -52,6 +48,11 @@ app.use("/api/v1/songs", require("./controllers/songs"));
 //     res.sendFile(path.join(__dirname, "build", "index.html"));
 //   });
 // }
+
+app.use(express.static(path.join(__dirname, "client/build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
 
 const port = process.env.PORT || 3006;
 app.listen(port, () => {
