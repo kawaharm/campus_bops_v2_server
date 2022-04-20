@@ -19,8 +19,10 @@ let headers = {
 // Logs response status and time (ms)
 // app.use(morgan("dev"));
 
-// Allow CORS
-app.use(cors());
+// Allow CORS for client-side requests
+app.use(cors({
+    origin: "https://campus-bops.netlify.app/",
+}));
 // Convert client's response from JSON to Javascript object
 app.use(express.json());
 
