@@ -22,7 +22,7 @@ let headers = {
 
 // // Allow CORS for client-side requests
 const corsOptions = {
-  origin: "https://campus-bops.netlify.app/",
+  origin: "https://campus-bops.netlify.app",
   credentials: true,
 };
 app.use(cors(corsOptions));
