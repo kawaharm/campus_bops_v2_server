@@ -36,6 +36,18 @@ app.use(cors());
 // *** Using express.json will cause Manifest: Line: 1, column: 1, Syntax error. ***
 app.use(express.static(path.join(__dirname, "client/build")));
 
+//PRODUCTION mode
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join((__dirname = "client/build/index.html")));
+  });
+}
+//BUILD mode
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/public/index.html"));
+});
+
 // CONTROLLERS
 app.use("/api/v1/schools", require("./controllers/schools"));
 app.use("/api/v1/categories", require("./controllers/categories"));
