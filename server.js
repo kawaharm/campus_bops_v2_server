@@ -33,6 +33,7 @@ app.use(cors());
 // });
 
 // Serve static files from the React app
+// *** Using express.json will cause Manifest: Line: 1, column: 1, Syntax error. ***
 app.use(express.static(path.join(__dirname, "client/build")));
 
 // CONTROLLERS
