@@ -21,7 +21,7 @@ let headers = {
 // app.use(morgan("dev"));
 
 // // Allow CORS for client-side requests
-app.use(cors(corsOptions));
+app.use(cors());
 
 // app.use(cors());
 // app.use(function (req, res, next) {
@@ -49,9 +49,9 @@ app.use("/api/v1/songs", require("./controllers/songs"));
 //   });
 // }
 
-app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "client/build/public")));
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/build", "index.html"));
+  res.sendFile(path.join(__dirname, "client/build/public", "index.html"));
 });
 
 const port = process.env.PORT || 3005;
