@@ -32,8 +32,8 @@ app.use(cors());
 //   next();
 // });
 
-// Convert client's response from JSON to Javascript object
-app.use(express.json());
+// Serve static files from the React app
+app.use(express.json(path.join(__dirname, "client/build")));
 
 // CONTROLLERS
 app.use("/api/v1/schools", require("./controllers/schools"));
@@ -49,12 +49,14 @@ app.use("/api/v1/songs", require("./controllers/songs"));
 //   });
 // }
 
-app.use(express.static(path.join(__dirname, "client/build/public")));
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/build/public", "index.html"));
+  res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
+// app.get("*", (req, res) => {
+//   res.sendFile(__dirname + "/client/public/index.html");
+// });
 
-const port = process.env.PORT || 3005;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`You are listening on PORT ${port}`);
 });

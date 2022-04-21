@@ -30,5 +30,8 @@
     "sequelize": "^6.17.0",
     "sequelize-cli": "^6.4.1"
   },
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.5.0"
+  }
 }
