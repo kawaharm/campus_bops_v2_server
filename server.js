@@ -7,6 +7,7 @@ const cors = require("cors");
 const path = require("path");
 const querystring = require("querystring");
 const { School, Category, User, Song } = require("./models");
+const res = require("express/lib/response");
 
 // Code for Spotify API
 let buff = new Buffer.from(
@@ -16,6 +17,13 @@ let authKey = buff.toString("base64");
 let headers = {
   Authorization: `Basic ${authKey}`,
 };
+
+// TEST TEST TEST
+app.get("/test", (req, res) => {
+  res.send({
+    people: "i just came to say hello",
+  });
+});
 
 // Logs response status and time (ms)
 // app.use(morgan("dev"));
