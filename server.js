@@ -35,7 +35,11 @@ app.use("/api/v1/songs", require("./controllers/songs"));
 
 //PRODUCTION mode
 if (process.env.NODE_ENV === "production") {
-  app.use(express.json(path.join(__dirname, "client/build")));
+  app.use(express.static(path.join(__dirname, "client/build")));
+
+  app.use("/api/v1/schools", require("./controllers/schools"));
+  app.use("/api/v1/categories", require("./controllers/categories"));
+  app.use("/api/v1/songs", require("./controllers/songs"));
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client/build/index.html"));
   });
