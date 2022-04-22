@@ -2,7 +2,6 @@ import React, { useEffect, useContext } from "react";
 import { SchoolsContext } from "../context/CampusContext";
 import SchoolFinder from "../api/SchoolFinder";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 function SchoolList() {
   const { schools, setSchools } = useContext(SchoolsContext);
@@ -12,7 +11,7 @@ function SchoolList() {
     const fetchData = async () => {
       try {
         // Get all schools from server
-        const response = await axios.get("/schools");
+        const response = await SchoolFinder.get("/");
         // Store school list in state
         console.log(response.data);
 

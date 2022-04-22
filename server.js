@@ -41,7 +41,7 @@ app.use("/api/v1/songs", require("./controllers/songs"));
 //   });
 // }
 //BUILD mode
-app.get("/", (req, res) => {
+app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/public/index.html"));
 });
 
