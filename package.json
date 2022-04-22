@@ -22,7 +22,6 @@
   "bugs": {
     "url": "https://github.com/kawaharm/campus_bops_v2_server/issues"
   },
-  "homepage": "",
   "dependencies": {
     "axios": "^0.26.1",
     "cors": "^2.8.5",
