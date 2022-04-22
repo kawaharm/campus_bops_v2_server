@@ -12,7 +12,7 @@ function SchoolList() {
     const fetchData = async () => {
       try {
         // Get all schools from server
-        const response = await axios.get("/");
+        const response = await axios.get("/schools");
         // Store school list in state
         console.log(response.data);
 
