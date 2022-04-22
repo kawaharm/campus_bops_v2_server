@@ -25,7 +25,13 @@ app.use(cors());
 
 // Serve static files from the React app
 // *** Using express.json will cause Manifest: Line: 1, column: 1, Syntax error. ***
-app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.json());
+
+// CONTROLLERS
+// *** Keep this above app.get("*") ***
+app.use("/api/v1/schools", require("./controllers/schools"));
+app.use("/api/v1/categories", require("./controllers/categories"));
+app.use("/api/v1/songs", require("./controllers/songs"));
 
 //PRODUCTION mode
 if (process.env.NODE_ENV === "production") {
@@ -38,11 +44,6 @@ if (process.env.NODE_ENV === "production") {
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/public/index.html"));
 });
-
-// CONTROLLERS
-app.use("/api/v1/schools", require("./controllers/schools"));
-app.use("/api/v1/categories", require("./controllers/categories"));
-app.use("/api/v1/songs", require("./controllers/songs"));
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
