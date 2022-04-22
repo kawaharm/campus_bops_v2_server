@@ -13,7 +13,7 @@ function AddSchool() {
       const addNewSchool = await SchoolFinder.post(`/`, {
         name: newSchool,
       });
-
+      console.log("ADDED: ", addNewSchool.data);
       addSchool(addNewSchool.data.data.school.name);
       // Refresh page to render new school
       window.location.reload(false);

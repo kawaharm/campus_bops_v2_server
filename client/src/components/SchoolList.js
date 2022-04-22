@@ -16,7 +16,6 @@ function SchoolList() {
         console.log(response.data);
 
         setSchools(response.data.data.schools);
-        console.log(response);
       } catch (err) {
         console.log(err);
       }
