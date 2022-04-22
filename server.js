@@ -18,12 +18,12 @@ let headers = {
   Authorization: `Basic ${authKey}`,
 };
 
-// TEST TEST TEST
-app.get("/test", (req, res) => {
-  res.send({
-    people: "i just came to say hello",
-  });
-});
+// // TEST TEST TEST
+// app.get("/test", (req, res) => {
+//   res.json({
+//     people: "i just came to say hello",
+//   });
+// });
 
 // Logs response status and time (ms)
 // app.use(morgan("dev"));
@@ -41,13 +41,13 @@ app.use("/api/v1/schools", require("./controllers/schools"));
 app.use("/api/v1/categories", require("./controllers/categories"));
 app.use("/api/v1/songs", require("./controllers/songs"));
 
-// //PRODUCTION mode
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static(path.join(__dirname, "client/build")));
-//   app.get("/", (req, res) => {
-//     res.sendFile(path.join(__dirname, "client/build/index.html"));
-//   });
-// }
+//PRODUCTION mode
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/build")));
+  app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "client/build/index.html"));
+  });
+}
 //BUILD mode
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/public/index.html"));
