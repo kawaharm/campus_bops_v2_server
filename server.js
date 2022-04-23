@@ -32,6 +32,12 @@ app.get("/api", (req, res) => {
   });
 });
 
+// CONTROLLERS
+// *** Keep this above app.get("*") ***
+app.use("/api/v1/schools", require("./controllers/schools"));
+app.use("/api/v1/categories", require("./controllers/categories"));
+app.use("/api/v1/songs", require("./controllers/songs"));
+
 //PRODUCTION mode
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -44,12 +50,6 @@ if (process.env.NODE_ENV === "production") {
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 // app.use(express.static(path.join(__dirname, "client/public")));
-
-// CONTROLLERS
-// *** Keep this above app.get("*") ***
-app.use("/api/v1/schools", require("./controllers/schools"));
-app.use("/api/v1/categories", require("./controllers/categories"));
-app.use("/api/v1/songs", require("./controllers/songs"));
 
 // //BUILD mode
 // app.get("/*", (req, res) => {
