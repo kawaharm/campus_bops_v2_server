@@ -23,56 +23,8 @@ let headers = {
 // // Allow CORS for client-side requests
 app.use(cors());
 
+// Parse JSON object from frontend. Need for POST requests
 app.use(bodyParser.json());
-
-// TEST TEST TEST
-app.post("/api/server", (req, res) => {
-  // const user = req.query.user || "kawaharm";
-  // axios.get(`https://api.github.com/users/${user}`).then((response) => {
-  //   res.json({
-  //     user: response.data,
-  //   });
-  // });
-  try {
-    // console.log("API REQ BODY", req.body);
-    // console.log("REQ BODY TO JSON", req.body.toJSON());
-    // res.status(201).json({
-    //   status: "success",
-    //   data: {
-    //     school: newSchool,
-    //   },
-    // });
-    let stringConstructor = "test".constructor;
-    let arrayConstructor = [].constructor;
-    let objectConstructor = {}.constructor;
-
-    function whatIsIt(object) {
-      if (object === null) {
-        console.log("this object is null");
-      }
-      if (object === undefined) {
-        console.log("this object is undefined");
-      }
-      if (object.constructor === stringConstructor) {
-        console.log("this object is string");
-      }
-      if (object.constructor === arrayConstructor) {
-        console.log("this object is array");
-      }
-      if (object.constructor === objectConstructor) {
-        console.log("this object is object");
-        console.log(req.body);
-      }
-      {
-        console.log("dont know");
-      }
-    }
-
-    whatIsIt(req.body);
-  } catch (err) {
-    console.log("CATCH ERROR IN API POST", err);
-  }
-});
 
 // CONTROLLERS
 // *** Keep this above app.get("*") ***

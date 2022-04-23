@@ -2,7 +2,6 @@ import React, { useEffect, useContext, useState } from "react";
 import { SchoolsContext } from "../context/CampusContext";
 import SchoolFinder from "../api/SchoolFinder";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 function SchoolList() {
   const { schools, setSchools } = useContext(SchoolsContext);
@@ -15,21 +14,9 @@ function SchoolList() {
         // Get all schools from server
         const response = await SchoolFinder.get("/");
         // Store school list in state
-        console.log(response.data);
-
         setSchools(response.data.data.schools);
-
-        // axios
-        //   .post(`${process.env.REACT_APP_SERVER_URL}/api/server`, {
-        //     name: "this is from api post in schoollist",
-        //   })
-        //   .then((response) => {
-        //     console.log("RESPONSE IN SCHOOLLIST", response);
-        //     console.log("RESPONSE DATA IN SCHOOLLIST", response.data);
-        //     // setUser(response.data);
-        //   });
       } catch (err) {
-        console.log("CATCH ERROR IN SCHOOLLIST", err);
+        console.log(err);
       }
     };
 
