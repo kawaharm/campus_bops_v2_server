@@ -19,11 +19,17 @@ function SchoolList() {
 
         setSchools(response.data.data.schools);
 
-        // axios.get("/api").then((response) => {
-        //   setUser(response.data);
-        // });
+        // axios
+        //   .post(`${process.env.REACT_APP_SERVER_URL}/api/server`, {
+        //     name: "this is from api post in schoollist",
+        //   })
+        //   .then((response) => {
+        //     console.log("RESPONSE IN SCHOOLLIST", response);
+        //     console.log("RESPONSE DATA IN SCHOOLLIST", response.data);
+        //     // setUser(response.data);
+        //   });
       } catch (err) {
-        console.log(err);
+        console.log("CATCH ERROR IN SCHOOLLIST", err);
       }
     };
 
