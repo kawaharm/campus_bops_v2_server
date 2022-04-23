@@ -1,7 +1,8 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { SchoolsContext } from "../context/CampusContext";
 import SchoolFinder from "../api/SchoolFinder";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function SchoolList() {
   const { schools, setSchools } = useContext(SchoolsContext);
