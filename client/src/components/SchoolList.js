@@ -13,15 +13,15 @@ function SchoolList() {
     const fetchData = async () => {
       try {
         // Get all schools from server
-        // const response = await SchoolFinder.get("/");
+        const response = await SchoolFinder.get("/");
         // Store school list in state
-        // console.log(response.data);
+        console.log(response.data);
 
-        //setSchools(response.data.data.schools);
+        setSchools(response.data.data.schools);
 
-        axios.get("/api").then((response) => {
-          setUser(response.data);
-        });
+        // axios.get("/api").then((response) => {
+        //   setUser(response.data);
+        // });
       } catch (err) {
         console.log(err);
       }
