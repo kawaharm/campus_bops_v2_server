@@ -1,11 +1,10 @@
 import React, { useEffect, useContext, useState } from "react";
-import { SchoolsContext } from "../context/CampusContext";
+import { SchoolsContext } from "../context/SchoolsContext";
 import SchoolFinder from "../api/SchoolFinder";
 import { useNavigate } from "react-router-dom";
 
 function SchoolList() {
   const { schools, setSchools } = useContext(SchoolsContext);
-  const [user, setUser] = useState(null);
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -57,7 +56,6 @@ function SchoolList() {
             })}
         </tbody>
       </table>
-      <p>{JSON.stringify(user)}</p>
     </div>
   );
 }
