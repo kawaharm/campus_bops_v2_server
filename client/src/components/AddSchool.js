@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import SchoolFinder from "../api/SchoolFinder";
-import { SchoolsContext } from "../context/CampusContext";
+import { SchoolsContext } from "../context/SchoolsContext";
 
 function AddSchool() {
   const [newSchool, setNewSchool] = useState("");

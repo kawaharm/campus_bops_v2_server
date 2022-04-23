@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { SchoolsContext } from "../context/CampusContext";
+import { SchoolsContext } from "../context/SchoolsContext";
 import SchoolFinder from "../api/SchoolFinder";
 import Categories from "./Categories";
 

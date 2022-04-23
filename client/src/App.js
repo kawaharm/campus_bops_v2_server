@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { SchoolsContextProvider } from "./context/CampusContext";
+import { SchoolsContextProvider } from "./context/SchoolsContext";
 
 import Navbar from "./components/Navbar";
 import Home from "./routes/Home";
