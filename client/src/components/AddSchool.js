@@ -10,13 +10,13 @@ function AddSchool() {
   const handleAddSchool = async (e) => {
     e.preventDefault();
     try {
-      const addNewSchool = await SchoolFinder.post(`/`, {
+      const addNewSchool = await SchoolFinder.post("/", {
         name: newSchool,
       });
       console.log("ADDED: ", addNewSchool.data);
       addSchool(addNewSchool.data.data.school.name);
       // Refresh page to render new school
-      // window.location.reload(false);
+      window.location.reload(false);
     } catch (err) {
       console.log(err);
     }

@@ -32,6 +32,10 @@ app.get("/api", (req, res) => {
   });
 });
 
+// Configuring the server to work with form submissions and json files
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 // CONTROLLERS
 // *** Keep this above app.get("*") ***
 app.use("/api/v1/schools", require("./controllers/schools"));
@@ -46,9 +50,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-// Configuring the server to work with form submissions and json files
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
 // app.use(express.static(path.join(__dirname, "client/public")));
 
 // //BUILD mode
