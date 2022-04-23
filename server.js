@@ -18,12 +18,15 @@ let headers = {
   Authorization: `Basic ${authKey}`,
 };
 
-// // TEST TEST TEST
-// app.get("/test", (req, res) => {
-//   res.json({
-//     people: "i just came to say hello",
-//   });
-// });
+// TEST TEST TEST
+app.get("/api", (req, res) => {
+  const user = req.query.user || "kawaharm";
+  axios.get(`https://api.github.com/users/${user}`).then((response) => {
+    res.json({
+      user: response.data,
+    });
+  });
+});
 
 // Logs response status and time (ms)
 // app.use(morgan("dev"));

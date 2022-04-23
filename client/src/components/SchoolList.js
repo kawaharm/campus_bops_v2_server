@@ -5,17 +5,22 @@ import { useNavigate } from "react-router-dom";
 
 function SchoolList() {
   const { schools, setSchools } = useContext(SchoolsContext);
+  const [user, setUser] = useState(null);
   let navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         // Get all schools from server
-        const response = await SchoolFinder.get("/");
+        // const response = await SchoolFinder.get("/");
         // Store school list in state
-        console.log(response.data);
+        // console.log(response.data);
 
         //setSchools(response.data.data.schools);
+
+        axios.get("/api").then((response) => {
+          setUser(response.data);
+        });
       } catch (err) {
         console.log(err);
       }
@@ -58,6 +63,7 @@ function SchoolList() {
             })}
         </tbody>
       </table>
+      <p>{JSON.stringify(user)}</p>
     </div>
   );
 }
