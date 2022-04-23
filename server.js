@@ -2,12 +2,10 @@ require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
 const app = express();
-const db = require("./db");
 const cors = require("cors");
 const path = require("path");
-const querystring = require("querystring");
 const { School, Category, User, Song } = require("./models");
-const res = require("express/lib/response");
+const axios = require("axios");
 
 // Code for Spotify API
 let buff = new Buffer.from(
@@ -18,6 +16,12 @@ let headers = {
   Authorization: `Basic ${authKey}`,
 };
 
+// Logs response status and time (ms)
+// app.use(morgan("dev"));
+
+// // Allow CORS for client-side requests
+app.use(cors());
+
 // TEST TEST TEST
 app.get("/api", (req, res) => {
   const user = req.query.user || "kawaharm";
@@ -27,12 +31,6 @@ app.get("/api", (req, res) => {
     });
   });
 });
-
-// Logs response status and time (ms)
-// app.use(morgan("dev"));
-
-// // Allow CORS for client-side requests
-app.use(cors());
 
 //PRODUCTION mode
 if (process.env.NODE_ENV === "production") {
