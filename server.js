@@ -40,7 +40,8 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-// Serve static files from the React app
+// Configuring the server to work with form submissions and json files
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 // app.use(express.static(path.join(__dirname, "client/public")));
 
