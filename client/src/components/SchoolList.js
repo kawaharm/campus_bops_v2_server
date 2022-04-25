@@ -22,12 +22,41 @@ function SchoolList() {
     fetchData();
   }, []);
 
+  //   const handleUpdate = (e, id) => {
+  //     // To prevent event bubbling
+  //     // Without this, all parent/child elements above (ex. handleSchoolSelect) will also run
+  //     e.stopPropagation();
+  //     try {
+  //         // Navigate to update page
+  //         navigate(`/schools/${id}/update`);
+  //     } catch (err) {
+  //         console.log('ERROR: ', err);
+  //     }
+  // }
+
   const handleSchoolSelect = (id) => {
     try {
       // Navigate to detail page
       navigate(`/schools/${id}`);
     } catch (err) {
       console.log(err);
+    }
+  };
+
+  const handleDelete = async (e, id) => {
+    // To prevent event bubbling
+    e.stopPropagation();
+    try {
+      const response = await SchoolFinder.delete(`/${id}`);
+      console.log(response);
+      // To update UI after deletion
+      setSchools(
+        schools.filter((school) => {
+          return school.id !== id;
+        })
+      );
+    } catch (err) {
+      console.log("ERROR: ", err);
     }
   };
 
@@ -45,12 +74,19 @@ function SchoolList() {
             schools.map((school) => {
               return (
                 <tr
-                  onClick={() => {
-                    handleSchoolSelect(school.id);
-                  }}
+                  onClick={() => handleSchoolSelect(school.id)}
                   key={school.id}
                 >
                   <td style={{ cursor: "pointer" }}>{school.name}</td>
+                  <td>
+                    {/* "() =>" will prevent function from running immediately and only on click */}
+                    <button
+                      onClick={(e) => handleDelete(e, school.id)}
+                      className="btn btn-danger"
+                    >
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               );
             })}
