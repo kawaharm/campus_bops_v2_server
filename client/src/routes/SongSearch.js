@@ -61,6 +61,7 @@ function SongSearch() {
         albumCover: selectedSong.albumCover,
         songPlayerId: selectedSong.songPlayerId,
       });
+      setSelectedSong(null);
       // Navigate to category page
       navigate(`/categories/${id}`);
     } catch (err) {
@@ -194,6 +195,7 @@ function SongSearch() {
                                     }
                                     className="btn btn-primary mb-3 mx-2"
                                     type="button"
+                                    data-bs-dismiss="modal"
                                   >
                                     {category.name}
                                   </button>
@@ -201,7 +203,7 @@ function SongSearch() {
                               })}
                           </div>
                         </div>
-                        <div className="modal-footer">
+                        {/* <div className="modal-footer">
                           <button
                             type="button"
                             className="btn btn-secondary"
@@ -209,10 +211,14 @@ function SongSearch() {
                           >
                             Close
                           </button>
-                          <button type="button" className="btn btn-primary">
+                          <button
+                            type="button"
+                            className="btn btn-primary"
+                            data-bs-dismiss="modal"
+                          >
                             Save changes
                           </button>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>

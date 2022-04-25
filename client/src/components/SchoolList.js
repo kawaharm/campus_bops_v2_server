@@ -22,17 +22,17 @@ function SchoolList() {
     fetchData();
   }, []);
 
-  //   const handleUpdate = (e, id) => {
-  //     // To prevent event bubbling
-  //     // Without this, all parent/child elements above (ex. handleSchoolSelect) will also run
-  //     e.stopPropagation();
-  //     try {
-  //         // Navigate to update page
-  //         navigate(`/schools/${id}/update`);
-  //     } catch (err) {
-  //         console.log('ERROR: ', err);
-  //     }
-  // }
+  const handleUpdate = (e, id) => {
+    // To prevent event bubbling
+    // Without this, all parent/child elements above (ex. handleSchoolSelect) will also run
+    e.stopPropagation();
+    try {
+      // Navigate to update page
+      navigate(`/schools/${id}/update`);
+    } catch (err) {
+      console.log("ERROR: ", err);
+    }
+  };
 
   const handleSchoolSelect = (id) => {
     try {
@@ -66,6 +66,8 @@ function SchoolList() {
         <thead>
           <tr className="bg-primary">
             <th scope="col">School</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -78,6 +80,15 @@ function SchoolList() {
                   key={school.id}
                 >
                   <td style={{ cursor: "pointer" }}>{school.name}</td>
+                  <td>
+                    {/* "() =>" will prevent function from running immediately and only on click */}
+                    <button
+                      onClick={(e) => handleUpdate(e, school.id)}
+                      className="btn btn-warning"
+                    >
+                      Update
+                    </button>
+                  </td>
                   <td>
                     {/* "() =>" will prevent function from running immediately and only on click */}
                     <button
