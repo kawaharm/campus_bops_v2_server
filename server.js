@@ -42,7 +42,6 @@ if (process.env.NODE_ENV === "production") {
 
 // Configuring the server to work with form submissions and json files
 app.use(express.json());
-// app.use(express.static(path.join(__dirname, "client/public")));
 
 // //BUILD mode
 // app.get("/*", (req, res) => {
