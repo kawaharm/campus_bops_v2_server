@@ -1,4 +1,4 @@
-html {
+/* html {
   height: 100%;
   width: 100%;
 }
@@ -11,7 +11,7 @@ body {
 
 body {
   background: white;
-}
+} */
 
 .tournament-headers {
   flex-grow: 1;
@@ -21,7 +21,7 @@ body {
   border-bottom: 1px solid #ccc;
 }
 
-.tournament-headers .h3 {
+.tournament-headers h3 {
   width: 25%;
   text-align: center;
   font-weight: 400;
@@ -38,10 +38,10 @@ body {
   margin-bottom: 50px;
 }
 
-.tournament-brackets {
+/* .tournament-brackets {
   display: flex;
   flex-direction: column;
-}
+} */
 
 .bracket {
   padding-left: 0;
@@ -144,9 +144,3 @@ body {
   display: none;
 }
 
-.team-item time {
-  display: inline-block;
-  background-color: #dbdbdb;
-  font-size: 0.8rem;
-  padding: 0 0.6rem;
-}
