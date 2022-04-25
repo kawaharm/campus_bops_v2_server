@@ -28,23 +28,24 @@ function AddSchool() {
           <label for="addSchool" className="add-school-label">
             Don't See Your School?
           </label>
-
-          <input
-            value={newSchool}
-            onChange={(e) => setNewSchool(e.target.value)}
-            type="text"
-            className="form-control"
-            id="addSchool"
-            placeholder="Add Your Awesome School"
-          />
+          <div className="school-input">
+            <input
+              value={newSchool}
+              onChange={(e) => setNewSchool(e.target.value)}
+              type="text"
+              className="form-control "
+              id="addSchool"
+              placeholder="Add Your Awesome School"
+            />
+            <button
+              onClick={handleAddSchool}
+              type="submit"
+              className="btn btn-primary submit-btn"
+            >
+              Add
+            </button>
+          </div>
         </div>
-        <button
-          onClick={handleAddSchool}
-          type="submit"
-          className="btn btn-primary submit-btn"
-        >
-          Add
-        </button>
       </form>
     </>
   );

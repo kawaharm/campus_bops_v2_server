@@ -20,9 +20,10 @@
     margin: 20px 0;
 }
 
-.song-input {
+.school-input {
     display: flex;
     font-size: 1.5rem;
+    width: 75%;
 }
 
 .submit-btn {
