@@ -45,7 +45,7 @@ function Navbar() {
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                Home <i class="fa-solid fa-house navbar-logo-icon" />
+                Home <i class="fa-solid fa-house navbar-link-icon" />
               </Link>
             </li>
             <li className="nav-item">
@@ -54,7 +54,7 @@ function Navbar() {
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
-                Schools <i class="fa-solid fa-school navbar-logo-icon" />
+                Schools <i class="fa-solid fa-school navbar-link-icon" />
               </Link>
             </li>
             <li className="nav-item">
@@ -64,7 +64,7 @@ function Navbar() {
                 onClick={closeMobileMenu}
               >
                 Search{" "}
-                <i class="fa-solid fa-magnifying-glass navbar-logo-icon" />
+                <i class="fa-solid fa-magnifying-glass navbar-link-icon" />
               </Link>
             </li>
             <li className="nav-item">

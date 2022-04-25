@@ -4,6 +4,7 @@ import SchoolFinder from "../api/SchoolFinder";
 import SongFinder from "../api/SongFinder";
 import CategoryFinder from "../api/CategoryFinder";
 import { SchoolsContext } from "../context/SchoolsContext";
+import "./SongSearch.css";
 
 function SongSearch() {
   const [title, setTitle] = useState("");
@@ -73,23 +74,27 @@ function SongSearch() {
     <>
       <form>
         <div class="form-group">
-          <label for="songTitle">Title</label>
-          <input
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            type="text"
-            className="form-control"
-            id="songTitle"
-            placeholder="Search Song"
-          />
+          <label for="songTitle" className="title">
+            Search the next song to be heard around campus!
+          </label>
+          <dix className="song-input">
+            <input
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              type="text"
+              className="form-control"
+              id="songTitle"
+              placeholder="Search Song Title, Artist, Album, etc."
+            />
+            <button
+              onClick={handleSongSearch}
+              type="submit"
+              className="btn btn-primary search-btn"
+            >
+              Search
+            </button>
+          </dix>
         </div>
-        <button
-          onClick={handleSongSearch}
-          type="submit"
-          className="btn btn-primary"
-        >
-          Search
-        </button>
       </form>
       <div className="row row-cols-3 mb-2">
         {searchResults &&
@@ -97,11 +102,11 @@ function SongSearch() {
             return (
               <div
                 key={result.id}
-                className="card text-white bg-success my-3 me-4"
+                className="card text-white bg-dark my-3 me-4 song-container"
                 style={{ maxWidth: "30%" }}
               >
                 <img
-                  className="card-img-top my-3"
+                  className="card-img-top my-3 album-cover"
                   src={result.albumCover}
                   alt="album cover"
                 />
@@ -117,6 +122,7 @@ function SongSearch() {
                       frameborder="0"
                       allowtransparency="true"
                       allow="encrypted-media"
+                      className="songplayer"
                     />
                   </div>
                   <button
@@ -124,7 +130,7 @@ function SongSearch() {
                       setSelectedSong(result);
                     }}
                     type="button"
-                    className="btn btn-primary"
+                    className="btn btn-primary add-to-category-btn"
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModal"
                   >
@@ -160,7 +166,7 @@ function SongSearch() {
                           <div className="btn-group">
                             <button
                               type="button"
-                              className="btn btn-danger dropdown-toggle"
+                              className="btn dropdown-toggle select-school-btn"
                               data-bs-toggle="dropdown"
                               aria-expanded="false"
                             >
@@ -203,22 +209,6 @@ function SongSearch() {
                               })}
                           </div>
                         </div>
-                        {/* <div className="modal-footer">
-                          <button
-                            type="button"
-                            className="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                          >
-                            Close
-                          </button>
-                          <button
-                            type="button"
-                            className="btn btn-primary"
-                            data-bs-dismiss="modal"
-                          >
-                            Save changes
-                          </button>
-                        </div> */}
                       </div>
                     </div>
                   </div>

@@ -25,7 +25,10 @@ function AddSchool() {
     <>
       <form>
         <div className="form-group">
-          <label for="addSchool">Don't See Your School?</label>
+          <label for="addSchool" className="add-school-label">
+            Don't See Your School?
+          </label>
+
           <input
             value={newSchool}
             onChange={(e) => setNewSchool(e.target.value)}
@@ -38,7 +41,7 @@ function AddSchool() {
         <button
           onClick={handleAddSchool}
           type="submit"
-          className="btn btn-primary"
+          className="btn btn-primary submit-btn"
         >
           Add
         </button>

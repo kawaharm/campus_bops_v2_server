@@ -1,0 +1,46 @@
+:root {
+    --mainColor1: #fff;
+    --mainColor2: #FF7F11;
+    --secondaryColor1: #FF1B1C;
+    --secondarColor2: #BEB7A4;
+    --darkColor1: #242424;
+  }
+
+.title {
+    font-size: 1.8rem;
+    margin: 20px 0;
+}
+
+.song-input {
+    display: flex;
+    font-size: 1.5rem;
+}
+
+.search-btn {
+    margin: 0 15px;
+    background: var(--darkColor1);
+}
+
+.search-btn:hover {
+    background: var(--mainColor2);
+}
+
+.song-container {
+    border: 3px outset #DBB900;
+}
+
+.album-cover {
+    border: 4px outset #DBB900;
+}
+
+.songplayer{
+    width: 100%;
+}
+
+.add-to-category-btn{
+    background: var(--mainColor2);
+}
+
+.select-school-btn {
+    background: var(--secondarColor2);
+}

@@ -1,0 +1,35 @@
+:root {
+    --mainColor1: #fff;
+    --mainColor2: #FF7F11;
+    --secondaryColor1: #FF1B1C;
+    --secondarColor2: #BEB7A4;
+    --darkColor1: #242424;
+  }
+
+.table-headers{
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+  .school-name{
+      font-size: 1.8rem;
+  }
+
+.add-school-label {
+    font-size: 1.8rem;
+    margin: 20px 0;
+}
+
+.song-input {
+    display: flex;
+    font-size: 1.5rem;
+}
+
+.submit-btn {
+    margin: 0 15px;
+    background: var(--darkColor1);
+}
+
+.submit-btn:hover {
+    background: var(--mainColor2);
+}

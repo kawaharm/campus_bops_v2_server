@@ -64,7 +64,7 @@ function SchoolList() {
     <div className="list-group">
       <table className="table table-hover table-dark">
         <thead>
-          <tr className="bg-primary">
+          <tr className="bg-primary table-headers">
             <th scope="col">School</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
@@ -79,7 +79,9 @@ function SchoolList() {
                   onClick={() => handleSchoolSelect(school.id)}
                   key={school.id}
                 >
-                  <td style={{ cursor: "pointer" }}>{school.name}</td>
+                  <td style={{ cursor: "pointer" }} className="school-name">
+                    {school.name}
+                  </td>
                   <td>
                     {/* "() =>" will prevent function from running immediately and only on click */}
                     <button

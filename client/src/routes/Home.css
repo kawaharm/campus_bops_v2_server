@@ -11,6 +11,7 @@
   object-fit: contain;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
+    text-shadow: 4px 4px 11px #BEB7A4;
 }
 
 .home-container > h1 {
